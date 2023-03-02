@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- style css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
+    <title>Malaysian Institute Of Technology</title>
+</head>
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<body>
+    <img class="back-gif" src="/Images/back.gif" alt="">
+
+    <!-- Loading Screen -->
+    <!-- <div class="loading-screen" id="loading">
+        <div class="loading-icon"></div>
+    </div> -->
+    <!-- Side Bar -->
+    <div class="sidebar" id="sideBar">
+        <div class="close-btn" onclick="sideBar()">
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="pl-0">
+            <li>
+                <a href="/"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="/about"><i class="fa fa-comments"></i> About</a>
+            </li>
+            <% if(isLoggedIn){ %>
+                <li>
+                    <a href="/login"><i class="fa fa-user"></i> Log Out</a>
+                </li>
+                <% }else{ %>
+                    <li>
+                        <a href="/login"><i class="fa fa-user"></i> Login</a>
+                    </li>
+                    <% } %>
+        </ul>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark"
+        style="background: linear-gradient(-45deg,#000428,#004e92);box-shadow: 0 10px 20px navy;">
+        <div class="container">
+            <a href="#" class="navbar-brand"><img src="/Images/logo.png" style="width: 50px;" alt="">
+                <h3 class="d-none d-md-inline align-middle ">Malaysian Institute Of Technology</h3>
+                <h3 class="d-inline d-md-none align-middle">MIT</h3>
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-none d-md-block active">
+                    <a href="/" class="nav-link first-link"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item d-none d-md-block">
+                    <a href="/about" class="nav-link"><i class="fa fa-comments"></i> About</a>
+                </li>
+                <% if(isLoggedIn===true){ %>
+                    <li class="nav-item d-none d-md-block">
+                        <a href="/logout" class="nav-link last-link"><i class="fa fa-user"></i> Log Out</a>
+                    </li>
+                    <% }else{ %>
+                        <li class="nav-item d-none d-md-block">
+                            <a href="/login" class="nav-link last-link"><i class="fa fa-user"></i> Login</a>
+                        </li>
+                        <% } %>
+                            <li class="nav-item d-block d-md-none">
+                                <i class="fa fa-bars fa-2x text-light" onclick="sideBar()"></i>
+                            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div></div>
+
+    <!-- Body -->
+    <div class="container mt-4" id="welcome-section">
+        <div class="row">
+            <div class="col-md-6 col-12 text-center align-self-center">
+                <h1 class="text-white">Welcome</h1>
+                <p class="text-muted">Your Trust is Our Power</p>
+                <button class="btn" style="background: #ffc300; color: #fff;" onclick="location.href='/about'">Learn
+                    More <i class="fa fa-arrow-right"></i></button>
+            </div>
+            <div class="col-md-6 d-none d-md-block">
+                <img src="/Images/logo.png" class="img-fluid slide-up" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: 100px 0;"></div>
+    <!-- Cards -->
+    <div class="container" id="cards">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-left">
+                    <div class="card-body text-center">
+                        <i class="fa fa-globe fa-3x" style="color: #ffc300;text-shadow: 0 0 5px #f83600;"></i>
+                        <br>
+                        <h3 class="card-title">Feel Local</h3>
+                        <p class="card-text">We Provide Friendly Enviroment. Raising Creativity it at its Peak</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fa fa-wrench fa-3x" style="color: #ffc300;text-shadow: 0 0 5px #f83600;"></i>
+                        <br>
+                        <h3 class="card-title">Technical Experience</h3>
+                        <p class="card-text">We Provide Technical Knowledge and Bunch Of Practicals to Boost Your Career
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-right">
+                    <div class="card-body text-center">
+                        <i class="fa fa-money fa-3x" style="color: #ffc300;text-shadow: 0 0 5px #f83600;"></i>
+                        <br>
+                        <h3 class="card-title">Budget Friendly</h3>
+                        <p class="card-text">We Provide Valuable Courses at price that you can Afford</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- College Images -->
+    <div class="container">
+        <div class="row" style="margin-top: 150px;">
+            <div class="col-md-6" style="position: relative;">
+                <div class="img-fluid w-100 h-100"
+                    style="position: absolute;top: -10%;left: -5%; border-radius: 20px;border-top:10px solid #ffc300;border-left:10px solid #f83600;z-index: -10;">
+                </div>
+                <img src="/Images/sir_group.jpg" class="img-fluid shadow slide-up"
+                    style="border-radius: 20px;width: 100%;object-fit: cover; height: 281.77px;" alt="">
+            </div>
+            <div class="col-md-6 text-center align-self-center">
+                <h1 class="text-light">Government Support</h1>
+                <p>With help of Government Support we are able to provide Quality Education</p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-6 text-center align-self-center">
+                <h1 class="text-light">Annual Projects</h1>
+                <p>Building Fun Arduino Projects with Teams is what you Compete for</p>
+            </div>
+            <div class="col-md-6" style="position: relative;">
+                <div class="img-fluid w-100 h-100"
+                    style="position: absolute;top: -10%;left: 5%; border-radius: 20px;border-right:10px solid #ffc300;border-top:10px solid #f83600;z-index: -10;">
+                </div>
+                <img src="/Images/Autobotproject.jpg" class="img-fluid shadow slide-up" style="border-radius: 20px;"
+                    alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div id="newsletter" style="background: linear-gradient(-45deg,#004e92,#000428);padding: 50px 0; margin: 100px 0;">
+        <div class="container text-center">
+            <h1 class="text-light">Subscribe to our newsletter</h1>
+            <p class="text-light">Get Latest Updates</p>
+
+            <form action="/subscription" method="post">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="email" placeholder="Email" class="form-control mx-auto mt-1 mb-1"
+                            style="outline: none;border:none;">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary btn-block shadow align-self-end"
+                            style="padding: 5px 20px;">Subscribe</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/efVjD4TbZ2g"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="col-md-6 text-center align-self-center">
+                <h1 class="text-white">Our Initiatives</h1>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="margin-top: 500px;"></div>
+</body>
+<script src="/js/index.js"></script>
+</html>

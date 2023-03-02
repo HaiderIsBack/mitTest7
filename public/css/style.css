@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,400;0,600;0,700;0,800;0,900;1,100;1,600;1,800;1,900&display=swap');
+
+body{
+    background: #080708;
+    font-family:'Jost', sans-serif;
+    overflow-x: hidden !important;
+}
+
+.loading-screen{
+    width: 100%;
+    height: 100vh;
+    background-color: #f83600;
+    position: fixed;
+    top: 0%;
+    z-index: 100;
+    display: block;
+}
+
+.loading-icon{
+    width: 50px;
+    height: 50px;
+    background-color: #f83600;
+    border: 5px solid #fff;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-60%,-50%);
+    animation: loading infinite 1s linear;
+}
+
+@keyframes loading {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+.sidebar{
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    z-index: 100;
+    background: linear-gradient(-45deg,#000428,#004e92);
+    transition: 0.4s ease-in;
+}
+
+.active{
+    left: 30%;
+}
+
+.sidebar ul{
+    list-style-type: none;
+}
+
+.sidebar ul li{
+    font-size: 25px;
+    padding: 30px 0px;
+    padding-left: 20px;
+    margin: auto;
+}
+
+.sidebar ul li:hover{
+    background-color: #fff;
+}
+
+.sidebar ul li:hover > a{
+    color: #f83600;
+}
+
+.sidebar ul li a{
+    color: #fff;
+}
+
+.close-btn{
+    position: relative;
+    height: 50px;
+}
+
+.close-btn div{
+    width: 5px;
+    height: 30px;
+    margin: 10px;
+    position: absolute;
+    top: 0%;
+    left: 80%;
+    background-color: #fff;
+}
+
+.close-btn div:nth-child(1){
+    transform: rotateZ(45deg);
+}
+
+.close-btn div:nth-child(2){
+    transform: rotateZ(-45deg);
+}
+
+#welcome-section button{
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.nav-link{
+    transition: 0.3s;
+}
+
+.nav-link:hover{
+    background-color: #fff;
+    color: #fe8c00 !important;
+}
+
+.first-link:hover{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.last-link:hover{
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+#cards .card{
+    background: #080708;
+    border: #004e92 5px solid;
+    box-shadow: 0px 0px 30px navy !important;
+}
+
+#cards .card h3{
+    color: #fff;
+}
+
+#cards .card-left{
+    perspective: 500px;
+    transform: skewX(-15deg) rotateZ(-15deg) translateY(25%);
+}
+
+#cards .card-right{
+    perspective: 500px;
+    transform: skewX(15deg) rotateZ(15deg) translateY(25%);
+}
+
+.btn{
+    border-radius: 0px !important;
+    border-top-left-radius: 100px !important;
+    border-bottom-right-radius: 100px !important;
+    border-left: 5px solid #ff5400 !important;
+    border-bottom: 5px solid #fe8c00 !important;
+    transition: 0.2s;
+}
+ .btn:hover{
+    border-left: 15px solid #ff5400 !important;
+    border-bottom: 15px solid #fe8c00 !important;
+ }
+
+ .back-gif{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0%;
+    object-fit: cover;
+    z-index: -10;
+    opacity: 0.4;
+ }
+
+ #admin-panel .admin-sidebar{
+    position: sticky;
+    top: 0;
+    background: linear-gradient(45deg,#8E2DE2,#4A00E0);
+    color: #fff !important;
+    width: 100%;
+    height: 100vh;
+    padding: 0 0;
+ }
+
+ #admin-panel .admin-sidebar-item{
+    padding: 10px 35px;
+ }
+
+ #admin-panel .admin-sidebar-item:hover{
+    cursor: pointer;
+    background-color: #e9e9e9;
+    color: #004e92;
+ }
+
+ #admin-panel .selected{
+    background-color: #fff !important;
+    color: #004e92 !important;
+ }
+
+#admin-panel thead{
+    position: sticky;
+    top: 0;
+}
+
+ .data-items:nth-child(even){
+    background: #333;
+ }
+
+ .data-items td{
+    color: #fff;
+ }
+
+ .data-items button{
+    color: crimson;
+    background: transparent;
+    border: none;
+    outline: none;
+ }
+
+ .fa-eye{
+    color: #18FF6D;
+ }
+
+ #myPrompt{
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 20;
+    display: none;
+    border-bottom: rgba(255, 255, 255, 0.2) 5px solid;
+    transition: 0.3s;
+ }
+
+ #myPrompt h5{
+    color: #999;
+ }
+
+ #myPrompt button{
+    border: none;
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+ }
+
+ #myPrompt .confirm-btn:hover{
+    background: #13da5c !important;
+    color: #fff;
+ }
+
+ #myPrompt .cancel-btn:hover{
+    background: rgb(184, 17, 50) !important;
+    color: #fff;
+ }
+
+ .prompt-active{
+    display: block !important;
+    animation: pop-up 200ms forwards ease;
+ }
+
+ #quick-access-cards button{
+    color: #fff;
+    padding: 5px 10px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+ }
+
+ #quick-access-cards button:hover{
+    color: rgba(0, 0, 0, 1);
+    background: #fff;
+ }
+
+#show-student{
+    background: #fff;
+}
+
+#student-details label{
+    border-left: 5px solid #8E2DE2;
+    padding-left: 10px;
+}
+
+#err-msg{
+    background: crimson;
+    box-shadow: 0 0 5px red;
+    color: #fff;
+    border-radius: 10px;
+}
+
+ @keyframes pop-up {
+    0%{
+        opacity: 0;
+        padding: 30px 30px;
+    }
+    50%{
+        padding: 50px 50px;
+    }
+    75%{
+        padding: 70px 70px;
+    }
+    100%{
+        opacity: 1 !important;
+        padding: 50px 50px;
+    }
+ }

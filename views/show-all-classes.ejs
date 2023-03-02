@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- style css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
+    <title>Malaysian Institute Of Technology</title>
+</head>
+
+<body>
+    <!-- Side Bar -->
+    <div class="sidebar" id="sideBar">
+        <div class="close-btn" onclick="sideBar()">
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="pl-0">
+            <li>
+                <a href="/"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="/about"><i class="fa fa-comments"></i> About</a>
+            </li>
+            <li>
+                <a href="/logout"><i class="fa fa-user"></i> Log Out</a>
+            </li>
+        </ul>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background: linear-gradient(-45deg,#396afc,#2948ff);">
+        <div class="container">
+            <a href="/" class="navbar-brand"><img src="/Images/logo.png" style="width: 50px;" alt="">
+                <h3 class="d-none d-md-inline align-middle ">Malaysian Institute Of Technology</h3>
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-none d-lg-block active">
+                    <a href="/" class="nav-link"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                    <a href="/about" class="nav-link"><i class="fa fa-comments"></i> About</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                    <a href="/logout" class="nav-link"><i class="fa fa-user"></i> Log Out</a>
+                </li>
+                <li class="nav-item d-block d-lg-none">
+                    <i class="fa fa-bars fa-2x text-light" onclick="sideBar()"></i>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <audio id="myAudio">  
+        <!-- provide the address of the sound to be played -->  
+        <source src="/Audio/popup.wav">  
+        Your browser does not support the audio element.  
+      </audio>  
+
+    <!-- Confirmation Prompt -->
+    <div id="myPrompt">
+        <div class="container text-center">
+            <h1>Are you sure?</h1>
+            <h5><span style="color: crimson;">DELETE</span> <i class="fa fa-arrow-right"></i> ID : <span id="deletionId"></span></h5>
+            <div class="row">
+                <div class="col-6">
+                    <button class="btn-block confirm-btn" style="background: #18FF6D;" onclick="Confirm()">Confirm</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn-block cancel-btn" style="background: crimson;" onclick="Cancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div id="admin-panel">
+        <div class="row">
+            <div class=" col-3 col-md-2 admin-sidebar">
+                <div class=" admin-sidebar-item" onclick="location.href='/admin/dashboard'">
+                    <i class="fa fa-cog fa-2x mr-2"></i>
+                    <h5 class="d-md-inline-block align-self-center d-none">Dashboard</h3>
+                </div>
+                <div class=" admin-sidebar-item" onclick="location.href='/admin/show-all-students'">
+                    <i class="fa fa-user fa-2x mr-2"></i>
+                    <h5 class="d-md-inline-block align-self-center d-none">Students</h3>
+                </div>
+                <div class=" admin-sidebar-item selected">
+                    <i class="fa fa-users fa-2x mr-2"></i>
+                    <h5 class="d-md-inline-block align-self-center d-none">Classes</h3>
+                </div>
+                <div class=" admin-sidebar-item" onclick="location.href='/admin/search'">
+                    <i class="fa fa-search fa-2x mr-2"></i>
+                    <h5 class="d-md-inline-block align-self-center d-none">Search</h3>
+                </div>
+            </div>
+            <div class="col-9 col-md-10 pl-0" >
+                <table class="table table-responsive-md">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Id</th>
+                            <th>Year</th>
+                            <th>Technology</th>
+                            <th>Total Students</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% classes.forEach(elem=>{ %>
+                            <tr class="data-items">
+                                <td>
+                                    <%= elem["class_id"] %>
+                                </td>
+                                <td>
+                                    <%= elem["class_name"] %>
+                                </td>
+                                <td>
+                                    <%= elem["class_technology"] %>
+                                </td>
+                                <td>
+                                    <%= elem["class_students"] %>
+                                </td>
+                                <td>
+                                    <form action="/show_class" method="post">
+                                        <input type="hidden" value="<%= elem['class_id'] %>" name="std_id">
+                                        <button onclick="Delete(this.form)" type="button"><i class="fa fa-eye"></i></button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/delete_class" method="post">
+                                        <input type="hidden" value="<%= elem['class_id'] %>" name="std_id">
+                                        <button onclick="Delete(this.form)" type="button"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+<script>
+    // Sidebar
+    var isOpened = false;
+    var sidebar = document.getElementById("sideBar");
+    function sideBar() {
+        if (isOpened) {
+            sidebar.classList.remove("active");
+            isOpened = false;
+        } else {
+            sidebar.classList.add("active");
+            isOpened = true;
+        }
+    }
+
+    // var students;
+    // // Fetch Students
+    // fetch("/",{
+    //     method:"GET",
+    //     headers:{
+    //         'Content-Type':"application/json"
+    //     }
+    // }).then((response)=>{
+    //     return response.json();
+    // }).then((result)=>{
+    //     students = result;
+    // }).catch((error)=>{
+    //     console.log(error);
+    // });
+
+    // Confirmation Prompt
+    var promptOpened = false;
+    var myPrompt = document.getElementById("myPrompt");
+    var currentForm;
+    function Delete(form){
+        if(promptOpened){
+            myPrompt.classList.remove("prompt-active");
+            promptOpened = false;
+        }else{
+            myPrompt.classList.add("prompt-active");
+            var sound = document.getElementById("myAudio");     
+            sound.play();   
+            currentForm = form;
+            promptOpened = true;
+        }
+        var deletionId = document.getElementById("deletionId"); 
+        deletionId.innerHTML = form.std_id.value;
+
+    }
+    function Confirm(){
+        currentForm.submit();
+    }
+    function Cancel(){
+        Delete(currentForm);
+    }
+</script>
+
+</html>
